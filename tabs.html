@@ -6,8 +6,75 @@
 		<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
 		<link href="assets/styles.css" rel="stylesheet">
 		<style>
-			/* Schrijf hier gewoon je CSS voor dit component */
+			/* Schrijf hier gewoon je CSS voor dit component */ 
 
+            /* Gedeelde eigenschappen voor tab-inhoud en tab-navigatie */
+.tab, .tab-navigation {
+    border-top: none; /* Bovenrand verwijderen */
+}
+
+.tab {
+    display: none; /* Eerst alle tabs verbergen */
+    box-sizing: border-box;
+    width: 100%; /* Volledige breedte voor tab-inhoud */
+    border: 1px solid #ccc; /* Rand voor tab-inhoud */
+    padding: 10px; /* Padding toevoegen aan tab-inhoud */
+}
+
+.tab-navigation {
+    list-style-type: none; /* Geen opsommingstekens voor de lijst */
+    margin: 0; /* Geen marges voor de lijst */
+    padding: 0; /* Geen padding voor de lijst */
+    border-bottom: 1px solid #ccc; /* Onderlijn toevoegen aan tab-navigatie */
+}
+
+.tab-navigation li {
+    display: inline-block; /* Plaats de tabbladen naast elkaar */
+}
+
+.tab-navigation a {
+    text-decoration: none; /* Geen onderlijning voor de links */
+    padding: 10px; /* Ruimte toevoegen rond de linktekst */
+    border-radius: 5px 5px 0 0; /* Afgeronde hoeken voor de bovenkant van de tabbladen */
+    position: relative; 
+    z-index: 1; /* Z-index hoger zetten om ervoor te zorgen dat ze boven andere elementen verschijnen */
+}
+
+.tab-navigation a:hover {
+    background-color: #f0f0f0; /* Achtergrondkleur veranderen bij hover */
+    border-bottom: 1px solid #ccc; /* Onderlijn toevoegen bij hover */
+}
+
+.tab-navigation .active-tab {
+    position: relative; /* Positie van actief tabblad relatief maken */
+    z-index: 2; /* Z-index hoger zetten om ervoor te zorgen dat het boven andere elementen verschijnt */
+}
+
+.tab-navigation .active-tab a {
+    border-color: #931c1c; /* Randkleur voor actief tabblad veranderen */
+    border-bottom-color: transparent; /* Onderste rand voor actief tabblad verbergen */
+}
+
+.tab-navigation .active-tab:before {
+    content: ""; /* Lijn boven het actieve tabblad toevoegen */
+    position: absolute; /* Absolute positie instellen */
+    left: 0; /* Links beginnen */
+    right: 0; /* Rechts eindigen */
+    top: -1px; /* Bovenste positie */
+    height: 1px; /* Hoogte van de lijn instellen */
+    background-color: #931c1c; /* Kleur van de lijn */
+    z-index: -1; /* om het achter andere elementen te plaatsen */
+}
+
+.tab-navigation .active-tab a:hover {
+    border-bottom-color: #931c1c; /* Randkleur voor actief tabblad bij hover veranderen */
+}
+
+.tab:target {
+    display: block;
+}
+
+        
 			/* Hint: kijk eens naar de :target selector */
 		</style>
 		<script type="module">
@@ -19,13 +86,15 @@
 
 		<!-- Hint: vraag je af wat tabbladen eigenlijk zijn -->
 
-		<!-- Content
 
-		Docenten
-		Sprints
-		Gedragscriteria
-		Open avond
+		<ul class="tab-navigation">
+        <li><a href="#docenten">Docenten</a></li>
+        <li><a href="#sprints">Sprints</a></li>
+        <li><a href="#gedragscriteria">Gedragscriteria</a></li>
+        <li><a href="#openavond">Open avond</a></li>
+    </ul>
 
+        <section id="docenten" class="tab">
 		<ol>
 			<li>Berat Zekaj</li>
 			<li>Charley Muhren</li>
@@ -38,7 +107,9 @@
 			<li>Sanne 't Hooft</li>
 			<li>Suus ten Voorde</li>
 		</ol>
+        </section>
 
+        <section id="sprints" class="tab">
 		<ol>
 			<li>Your Tribe</li>
 			<li>The Client</li>
@@ -61,7 +132,9 @@
 			<li>Free Space</li>
 			<li>Final Sprint</li>
 		</ol>
+        </section>
 
+        <section id="gedragscriteria" class="tab">
 		<ol>
 			<li>Methodisch handelen
 				<ol>
@@ -99,18 +172,13 @@
 				</ol>
 			</li>
 		</ol>
+        </section>
 
+        <section id="openavond" class="tab">
 		<p>Open avond 16 april</p>
 		<p>Op de open dag proef je de sfeer en ontdek je hoe het is om aan de HvA te studeren. Je maakt kennis met studenten en docenten van de opleiding.</p>
 		<p>Stel je vragen over studiekeuze, studeren met een functiebeperking en toelating op het studiekeuzeplein. Heb je nog vragen over de opleiding? We staan tijdens de open dag/avond klaar om al jouw vragen te beantwoorden.</p>
+        <p>De open dag is van 17.00 tot 20.00 uur.</p>
+        </section>
 
-		-->
-
-		<details open>
-			<summary>Demo video</summary>
-			<video src="assets/tabs.mp4" width="1298" height="505" controls muted autoplay loop>
-				<a href="assets/tabs.mp4">assets/tabs.mp4</a>
-			</video>
-		</details>
-	</body>
-</html>
+		
